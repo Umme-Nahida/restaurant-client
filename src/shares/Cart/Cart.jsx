@@ -37,7 +37,7 @@ const Cart = ({ item }) => {
           <p>${item?.price} </p>
         </div>
         <div>
-          <button className="rounded-lg px-4 py-2 font-semibold border border-b-4 border-[#D99904] text-[#D99904] hover:bg-[#FACC15] hover:text-white duration-300 hover:scale-105 hover:bg-transparent">
+          <button className="rounded-lg px-4 py-2 font-semibold border border-b-4 border-[#D99904] text-[#D99904] hover:bg-[#FACF23] hover:text-white duration-300 hover:scale-105 hover:bg-transparent">
             Add to Cart
           </button>
         </div>
