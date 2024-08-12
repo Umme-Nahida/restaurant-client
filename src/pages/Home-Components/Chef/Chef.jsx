@@ -15,7 +15,7 @@ const Chef = () => {
     console.log(menus)
 
     return (
-        <div className="py-5 lg:py-20">
+        <div className="py-5 lg:pb-20">
             <SectionTitle
             subTitle={"---Should Try---"}
             heading={"CHEF RECOMMENDS"}
