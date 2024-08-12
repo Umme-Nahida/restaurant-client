@@ -32,7 +32,7 @@ const PopularMenu = () => {
                 }
             </div>
             <div className="text-center my-5 ">
-                <button className="btn bg-transparent border border-b-4 border-black">View All Menu</button>
+                <button className="btn bg-transparent hover:bg-[#49B2FF] hover:text-white hover:border-[#49f3ff] border border-b-4 border-black">View All Menu</button>
             </div>
         </div>
     );
