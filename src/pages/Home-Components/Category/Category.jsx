@@ -8,7 +8,6 @@ import img5 from "../../../assets/home/slide5.jpg"
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-// import required modules
 import { Pagination } from 'swiper/modules';
 
 const Category = () => {
