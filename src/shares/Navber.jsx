@@ -21,7 +21,7 @@ const Navber = () => {
     </>
   );
   return (
-    <div className="bg-blue-400/20 backdrop-blur-2xl fixed z-[99999] w-full text-white ">
+    <div className="bg-blue-400/20 backdrop-blur-xl fixed z-[99999] w-full text-white ">
       <div className="navbar max-w-screen-xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
