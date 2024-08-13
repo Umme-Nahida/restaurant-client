@@ -22,7 +22,7 @@ module.exports = {
       '@typescript-eslint',
     ],
     rules: {
-      "react/prop-types": "off"
+      "react/prop-types": "off",
     }
   };
   
