@@ -1,13 +1,15 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider";
+import toast from "react-hot-toast";
 
 const Navber = () => {
   const {user,logOut} = useContext(AuthContext)
 
   const handleLogout=()=>{
     logOut() 
-    
+    toast.success("user logout successfully")
+
   }
   const menu = (
     <>
@@ -37,7 +39,7 @@ const Navber = () => {
     </>
   );
   return (
-    <div className="bg-[#FACC15] bg-opacity-70 backdrop-blur-xl fixed z-[99999] w-full text-white ">
+    <div className="bg-[#FACC15] bg-opacity-70 backdrop-blur-xl fixed z-[999] w-full text-white ">
       <div className="navbar max-w-screen-xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
