@@ -2,9 +2,10 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navber from "../shares/Navber";
 import Footer from "../shares/Footer";
 
+
 const Main = () => {
     const location = useLocation();
-    const isLoginPage = location.pathname.includes('login')
+    const isLoginPage = location.pathname.includes('login') || location.pathname.includes('signup')
 
     return (
         <div>
