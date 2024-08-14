@@ -3,7 +3,7 @@ import img from "../../assets/others/authentication1.png";
 import { loadCaptchaEnginge, LoadCanvasTemplate,validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from "../../Authentication/AuthProvider";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { replace, useLocation, useNavigate } from "react-router-dom";
 
 
 
@@ -11,6 +11,10 @@ const Login = () => {
   const [disabled,setDisabled] = useState(true)
   const {loginUser}=useContext(AuthContext);
   const navigate = useNavigate()
+  const location = useLocation();
+  console.log(location)
+  
+  const from = location?.state?.from.pathname || '/'
 
   useEffect(()=>{
     loadCaptchaEnginge(6); 
@@ -30,7 +34,7 @@ const Login = () => {
       console.log(loggedUser)
       toast.success('user login successfully')
       e.target.reset();
-      navigate('/')
+      navigate(from,{replace:true})
     })
 
   };
