@@ -1,15 +1,32 @@
+import { useContext } from "react";
 import img from "../../assets/others/authentication2.png";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Authentication/AuthProvider";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const {createUser} = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data)
+    createUser(data.email,data.password)
+    .then(result=>{
+        console.log(result.user)
+        toast.success('user created successfully')
+        reset();
+        navigate('/')
+
+    })
+
+  };
 
   return (
     <div className="">
@@ -68,7 +85,7 @@ const SignUp = () => {
                 className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:ring-1 focus-visible:outline-none dark:border-zinc-700"
                 id="password"
                 placeholder="Enter password"
-                {...register("password", {required:true,minLength:6,maxLength:16})}
+                {...register("password", {required:true})}
                 name="password"
                 type="password"
               />

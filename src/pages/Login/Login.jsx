@@ -1,12 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import img from "../../assets/others/authentication1.png";
 import { loadCaptchaEnginge, LoadCanvasTemplate,validateCaptcha } from 'react-simple-captcha';
+import { AuthContext } from "../../Authentication/AuthProvider";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 
 const Login = () => {
-  const captchaRef = useRef(null)
   const [disabled,setDisabled] = useState(true)
+  const {loginUser}=useContext(AuthContext);
+  const navigate = useNavigate()
 
   useEffect(()=>{
     loadCaptchaEnginge(6); 
@@ -19,21 +23,30 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
+    loginUser(email,password)
+    .then(result=>{
+      const loggedUser = result.user;
+      console.log(loggedUser)
+      toast.success('user login successfully')
+      e.target.reset();
+      navigate('/')
+    })
+
   };
 
-  const handleCaptcha=()=>{
-   const user_captcha_value = captchaRef.current.value;
+  const handleCaptcha=(e)=>{
+   const user_captcha_value = e.target.value;
    console.log(user_captcha_value)
    if (validateCaptcha(user_captcha_value)==true) {
      setDisabled(false)
-    alert('Captcha Matched');
-    captchaRef.current.value = "";
    } else {
-    alert('Captcha Does Not Match');
+    toast.error('Captcha Does Not Match');
     setDisabled(true)
-    captchaRef.current.value = "";
+    
 }
-  }
+}
+
   return (
     <div className="">
       <div className="flex flex-col lg:flex-row items-center justify-center lg:gap-x-4 min-h-screen mx-auto">
@@ -67,7 +80,7 @@ const Login = () => {
             </label>
             <input
               className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:ring-1 focus-visible:outline-none dark:border-zinc-700"
-              id="password"
+             
               placeholder="Enter password"
               name="password"
               type="password"
@@ -82,6 +95,7 @@ const Login = () => {
               </a>
             </div>
           </div>
+          {/* valided email */}
             <div className="space-y-2 text-sm">
               <label
                 htmlFor="password"
@@ -90,17 +104,16 @@ const Login = () => {
                 <LoadCanvasTemplate />
               </label>
               <input
+                onBlur={handleCaptcha} 
                 className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:ring-1 focus-visible:outline-none dark:border-zinc-700"
-                id="password"
-                ref={captchaRef}
                 placeholder="Enter the catcha above"
                 name="captcha"
                 type="text"
                 required
               />
-              <button onClick={handleCaptcha} className="btn btn-outline btn-xs btn-block">Valided captcha</button>
              
             </div>
+            {/* submit button */}
             <div className="form-control mt-6">
             <button disabled={disabled} type="submit" className=" btn rounded-md btn-block bg-yellow-400 hover:bg-yellow-500">Login</button>
             </div>
