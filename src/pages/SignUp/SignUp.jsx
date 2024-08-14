@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const {createUser} = useContext(AuthContext);
+  const {createUser,updateUserProfile} = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -20,9 +20,12 @@ const SignUp = () => {
     createUser(data.email,data.password)
     .then(result=>{
         console.log(result.user)
-        toast.success('user created successfully')
-        reset();
-        navigate('/')
+        updateUserProfile(data.name,data.photo)
+        .then(()=>{
+          toast.success('user created successfully')
+          reset();
+          navigate('/')
+        })
 
     })
 
@@ -50,6 +53,25 @@ const SignUp = () => {
                 {...register("name", { required: true })}
                 name="name"
                 type="text"
+              />
+              {errors.name && (
+                <span className="text-red-500">name field is required</span>
+              )}
+            </div>
+            <div className="space-y-2 text-sm">
+              <label
+                htmlFor="username"
+                className="block text-zinc-700 dark:text-zinc-300 font-medium"
+              >
+                Photo url 
+              </label>
+              <input
+                className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:ring-1 focus-visible:outline-none dark:border-zinc-700"
+                id="username"
+                placeholder="Enter photo url"
+                {...register("photo", { required: true })}
+                name="photo"
+                type="url"
               />
               {errors.name && (
                 <span className="text-red-500">name field is required</span>
@@ -106,7 +128,7 @@ const SignUp = () => {
                 type="submit"
                 className=" btn rounded-md btn-block bg-yellow-400 hover:bg-yellow-500"
               >
-                Login
+                Sign up 
               </button>
             </div>
           </form>
