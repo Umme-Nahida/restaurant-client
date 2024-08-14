@@ -3,7 +3,7 @@
 const Cart = ({ item }) => {
   return (
     <div>
-      <div className="w-full max-w-[340px] space-y-3 rounded-xl bg-white p-4 shadow-lg dark:bg-[#18181B]">
+      <div className="w-full max-w-[340px] max-h-[490px] space-y-3 rounded-xl bg-white p-4 shadow-lg dark:bg-[#18181B]">
         <div className="relative flex h-48 w-full justify-center lg:h-[260px]">
           <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
             {/* love  */}
@@ -18,7 +18,7 @@ const Cart = ({ item }) => {
               </svg>
             </div>
             <button className="rounded-xl bg-[#0095FF] px-3 py-1 font-medium text-white duration-200 hover:bg-[#00ccff]">
-              30% off
+             ${item?.price} 
             </button>
           </div>
           <img
@@ -32,9 +32,9 @@ const Cart = ({ item }) => {
         <div className="space-y-2 font-semibold">
           <h6 className="text-sm md:text-base lg:text-lg">{item.name} </h6>
           <p className="text-xs font-semibold text-gray-400 md:text-sm">
-            {item?.recipe}
+            {item?.recipe.length >60 ? item.recipe.slice(0,80)+"...." : item?.recipe}
           </p>
-          <p>${item?.price} </p>
+          
         </div>
         <div>
           <button className="rounded-lg px-4 py-2 font-semibold border border-b-4 border-[#D99904] text-[#D99904] hover:bg-yellow-400 hover:text-white duration-300 hover:scale-105 hover:bg-transparent">

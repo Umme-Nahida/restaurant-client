@@ -4,7 +4,7 @@ const ShareMenu = ({item}) => {
 
     return (
         <div className="flex items-center space-x-5">
-            <img src={item?.image} alt="" style={{borderRadius:"0 200px 200px 200px" }} className="w-[100px]" />
+            <img src={item?.image} alt="" style={{borderRadius:"0 200px 200px 200px" }} className="w-[100px] duration-300 hover:scale-110" />
             <div>
                 <h1 className="uppercase text-lg md:text-xl">{item?.name}----------------- </h1>
                 <p>{item?.recipe} </p>
