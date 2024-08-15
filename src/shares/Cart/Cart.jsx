@@ -1,6 +1,44 @@
 /* eslint-disable react/prop-types */
 
+import toast from "react-hot-toast";
+import useAuth from "../../Hooks/useAuth";
+import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useCart from "../../Hooks/useCart";
+
+
 const Cart = ({ item }) => {
+  const {user}=useAuth();
+  const [,refetch] = useCart();
+  const navigate = useNavigate()
+  const location = useLocation();
+  const axiosSecure = useAxiosSecure();
+
+const handleAddToCart=()=>{
+  console.log(item)
+  if(user && user.email){
+    // something to do 
+    const cartItem = {
+      menuId:item._id,
+      customerEmail:user?.email,
+      name:item.name,
+      img:item.image,
+      preice:item.price
+    }
+    // TODO: save card data to the server using axios and instance
+    axiosSecure.post("/carts",cartItem)
+    .then(res=>{
+      if(res.data.insertedId){
+        refetch()
+        toast.success('add to cart successfully')
+      }
+    })
+  }else{
+    toast("you are not login ")
+    navigate('/login',{state:{from:location}})
+  }
+}
+
   return (
     <div>
       <div className="w-full max-w-[340px] max-h-[490px] space-y-3 rounded-xl bg-white p-4 shadow-lg dark:bg-[#18181B]">
@@ -37,7 +75,8 @@ const Cart = ({ item }) => {
           
         </div>
         <div>
-          <button className="rounded-lg px-4 py-2 font-semibold border border-b-4 border-[#D99904] text-[#D99904] hover:bg-yellow-400 hover:text-white duration-300 hover:scale-105 hover:bg-transparent">
+          
+          <button onClick={handleAddToCart} className="rounded-lg px-4 py-2 font-semibold border border-b-4 border-[#D99904] text-[#D99904] hover:bg-yellow-400 hover:text-white duration-300 hover:scale-105 hover:bg-transparent">
             Add to Cart
           </button>
         </div>
