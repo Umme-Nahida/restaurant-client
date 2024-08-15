@@ -2,15 +2,17 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
+import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../Hooks/useCart";
 
 const Navber = () => {
-  const {user,logOut} = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
 
-  const handleLogout=()=>{
-    logOut() 
-    toast.success("user logout successfully")
-
-  }
+  const handleLogout = () => {
+    logOut();
+    toast.success("user logout successfully");
+  };
   const menu = (
     <>
       <li>
@@ -28,14 +30,19 @@ const Navber = () => {
       <li>
         <Link to="/order/salad">Our Shop</Link>
       </li>
-      {
-        user ? 
-        <button onClick={handleLogout}><Link >Sign Out</Link></button>
-      : 
-      <li>
-      <Link to="/login">Login</Link>
-    </li> 
-      }
+      <div className="indicator flex items-center justify-center mr-4">
+        <span className="indicator-item badge badge-secondary">{cart.length}+</span>
+        <span className="text-2xl"><FaShoppingCart></FaShoppingCart> </span>
+      </div>
+      {user ? (
+        <button onClick={handleLogout}>
+          <Link>Sign Out</Link>
+        </button>
+      ) : (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
     </>
   );
   return (
