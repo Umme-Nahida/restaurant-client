@@ -3,7 +3,9 @@ import img from "../../assets/others/authentication1.png";
 import { loadCaptchaEnginge, LoadCanvasTemplate,validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from "../../Authentication/AuthProvider";
 import toast from "react-hot-toast";
-import { replace, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import SocialLogin from "../../shares/SocialLogin/SocialLogin";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 
@@ -12,6 +14,7 @@ const Login = () => {
   const {loginUser}=useContext(AuthContext);
   const navigate = useNavigate()
   const location = useLocation();
+  const axiosPublic= useAxiosPublic()
   console.log(location)
   
   const from = location?.state?.from.pathname || '/'
@@ -31,7 +34,15 @@ const Login = () => {
     loginUser(email,password)
     .then(result=>{
       const loggedUser = result.user;
-      console.log(loggedUser)
+      const userInfo={
+        userEmail:loggedUser.email,
+        userName:loggedUser.displayName
+      }
+      axiosPublic.post("/user",userInfo)
+      .then((res)=>{
+          console.log(res.data)
+          navigate('/')
+      })
       toast.success('user login successfully')
       e.target.reset();
       navigate(from,{replace:true})
@@ -128,6 +139,8 @@ const Login = () => {
               Signup
             </a>
           </p>
+          <div className="divider"></div>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { AuthContext } from "../../Authentication/AuthProvider";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialLogin from "../../shares/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -23,7 +24,7 @@ const SignUp = () => {
       updateUserProfile(data.name, data.photo)
       .then(() => {
         const userInfo = {
-          userName: data.displayName,
+          userName: data.name,
           userEmail: data.email,
         };
         axiosPublic.post("/user", userInfo).then((res) => {
@@ -43,7 +44,7 @@ const SignUp = () => {
       <div className="flex flex-col lg:flex-row items-center justify-center lg:gap-x-4 min-h-screen mx-auto">
         <img src={img} alt="" className="w-[700px]" />
         <div className=" w-full max-w-md space-y-4 rounded-lg border bg-white p-7 shadow-lg sm:p-10 dark:border-zinc-700 dark:bg-zinc-900">
-          <h1 className="text-3xl font-semibold tracking-tight">Sign In</h1>
+          <h1 className="text-3xl font-semibold tracking-tight">Sign Up</h1>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="space-y-2 text-sm">
@@ -55,7 +56,7 @@ const SignUp = () => {
               </label>
               <input
                 className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:ring-1 focus-visible:outline-none dark:border-zinc-700"
-                id="usernameId"
+              id="usernameId"
                 placeholder="Enter Name"
                 {...register("name", { required: true })}
                 name="name"
@@ -145,6 +146,7 @@ const SignUp = () => {
               login
             </a>
           </p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
