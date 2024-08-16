@@ -1,5 +1,4 @@
 import useAllUsers from "../../Hooks/useAllUsers";
-import CartRow from "../MyCart/CartRow";
 import UserCart from "./UserCart";
 
 const AllUser = () => {
