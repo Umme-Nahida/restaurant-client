@@ -23,7 +23,7 @@ const handleAddToCart=()=>{
       customerEmail:user?.email,
       name:item.name,
       img:item.image,
-      preice:item.price
+      price:item.price
     }
     // TODO: save card data to the server using axios and instance
     axiosSecure.post("/carts",cartItem)
