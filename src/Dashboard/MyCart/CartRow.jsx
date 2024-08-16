@@ -3,11 +3,13 @@
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useCart from "../../Hooks/useCart";
 
 const CartRow = ({ item, index }) => {
   const axiosSecure = useAxiosSecure();
+  const [,refetch] = useCart()
   const handleDelete = (id) => {
-    console.log(id);
+    // console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to delete item!",
@@ -19,19 +21,20 @@ const CartRow = ({ item, index }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/deleteCart/${id}`).then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (res.data.deletedCount > 0) {
             Swal.fire({
               title: "Deleted!",
               text: "Your item has been deleted.",
               icon: "success",
             });
+            refetch()
           }
         });
       }
     });
   };
-  console.log(item);
+  // console.log(item);
   return (
     <tr>
       <th>{index + 1}</th>

@@ -4,9 +4,11 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Authentication/AuthProvider";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const SignUp = () => {
-  const {createUser,updateUserProfile} = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const {
     register,
@@ -16,19 +18,24 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data)
-    createUser(data.email,data.password)
-    .then(result=>{
-        console.log(result.user)
-        updateUserProfile(data.name,data.photo)
-        .then(()=>{
-          toast.success('user created successfully')
-          reset();
-          navigate('/')
-        })
-
-    })
-
+    // console.log(data);
+    createUser(data.email, data.password).then(() => {
+      updateUserProfile(data.name, data.photo)
+      .then(() => {
+        const userInfo = {
+          userName: data.displayName,
+          userEmail: data.email,
+        };
+        axiosPublic.post("/user", userInfo).then((res) => {
+          if(res.data.insertedId){
+            console.log("user added to the database",res.data);
+            toast.success("user created successfully");
+            reset();
+            navigate("/");
+          }
+        });
+      });
+    });
   };
 
   return (
@@ -48,7 +55,7 @@ const SignUp = () => {
               </label>
               <input
                 className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:ring-1 focus-visible:outline-none dark:border-zinc-700"
-                id="username"
+                id="usernameId"
                 placeholder="Enter Name"
                 {...register("name", { required: true })}
                 name="name"
@@ -63,11 +70,11 @@ const SignUp = () => {
                 htmlFor="username"
                 className="block text-zinc-700 dark:text-zinc-300 font-medium"
               >
-                Photo url 
+                Photo url
               </label>
               <input
                 className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:ring-1 focus-visible:outline-none dark:border-zinc-700"
-                id="username"
+                id="photoId"
                 placeholder="Enter photo url"
                 {...register("photo", { required: true })}
                 name="photo"
@@ -86,7 +93,7 @@ const SignUp = () => {
               </label>
               <input
                 className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:ring-1 focus-visible:outline-none dark:border-zinc-700"
-                id="username"
+                id="emailId"
                 placeholder="Enter Email"
                 {...register("email", { required: true })}
                 name="email"
@@ -105,9 +112,9 @@ const SignUp = () => {
               </label>
               <input
                 className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:ring-1 focus-visible:outline-none dark:border-zinc-700"
-                id="password"
+                id="passwordId"
                 placeholder="Enter password"
-                {...register("password", {required:true})}
+                {...register("password", { required: true })}
                 name="password"
                 type="password"
               />
@@ -128,7 +135,7 @@ const SignUp = () => {
                 type="submit"
                 className=" btn rounded-md btn-block bg-yellow-400 hover:bg-yellow-500"
               >
-                Sign up 
+                Sign up
               </button>
             </div>
           </form>
