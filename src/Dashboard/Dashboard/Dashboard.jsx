@@ -44,7 +44,7 @@ const Dashboard = () => {
              </li>
              <div className="divider"></div>
              <li>
-                <NavLink to="/dashboard/home">
+                <NavLink to="/">
                 <FaHome></FaHome>
                 Home
                 </NavLink>

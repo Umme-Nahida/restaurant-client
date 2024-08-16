@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 
+import { MdDelete } from "react-icons/md";
+
 const CartRow = ({item,index}) => {
+
+    const handleDelete=(id)=>{
+      console.log(id)
+    }
     console.log(item)
     return (
         <tr>
@@ -23,7 +29,9 @@ const CartRow = ({item,index}) => {
         </td>
         <td>${item?.preice ? item?.preice : item.price}</td>
         <th>
-          <button className="btn btn-ghost btn-xs">Approve</button>
+          <button onClick={()=>handleDelete(item._id)} className="btn btn-ghost btn-xs text-2xl text-red-500">
+            <MdDelete></MdDelete>
+          </button>
         </th>
       </tr>
     );
