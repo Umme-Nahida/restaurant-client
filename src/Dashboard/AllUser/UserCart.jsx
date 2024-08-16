@@ -8,16 +8,10 @@ const UserCart = ({item,index}) => {
         <tr>
         <th>{index + 1}</th>
         <td>
-          <div className="flex items-center gap-3">
-            <div className="avatar">
-              <div className="mask mask-squircle h-12 w-12">
-                <img src={item?.userName} alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-          </div>
+          {item.userName}
         </td>
-        <td>{item?.name}</td>
-        <td>$price</td>
+        <td>{item?.userEmail}</td>
+        <td>Admin</td>
         <th>
           <button
            
