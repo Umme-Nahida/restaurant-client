@@ -12,7 +12,7 @@ const Chef = () => {
           setMenus(data)
         })
     },[])
-    console.log(menus)
+    // console.log(menus)
 
     return (
         <div className="py-5 lg:pb-20">

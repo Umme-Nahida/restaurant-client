@@ -2,6 +2,7 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut,updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "./firebase.confic";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 export const AuthContext = createContext(null);
@@ -9,6 +10,7 @@ const googleProvider = new GoogleAuthProvider()
 const AuthProvider = ({children}) => {
   const [user,setUser] = useState(null);
   const [loading,setLoading] = useState(true);
+  const axiosSecure=useAxiosSecure()
 
   const createUser=(email,password)=>{
     setLoading(true);
@@ -20,8 +22,8 @@ const AuthProvider = ({children}) => {
   }
 
   const logOut =()=>{
-    setLoading(true)
-    return signOut(auth)
+    setLoading(true);
+    return signOut(auth);
   }
 
   const updateUserProfile = (name,photo)=>{
@@ -39,7 +41,19 @@ const AuthProvider = ({children}) => {
   useEffect(()=>{
    const unSubscribe = onAuthStateChanged(auth,(currentUser)=>{
        setUser(currentUser);
+       const loggedUser = currentUser?.email || user?.email;
        console.log(currentUser)
+       if(currentUser){
+          axiosSecure.post('/jwt',{email:loggedUser})
+          .then(res=>{
+            console.log(res.data)
+            if(res.data.token){
+              localStorage.setItem("access-token",res.data.token)
+            }else{
+              localStorage.removeItem("access-token")
+            }
+          })
+       }
        setLoading(false)
    })
 
@@ -47,7 +61,7 @@ const AuthProvider = ({children}) => {
      unSubscribe()
    }
 
-  },[])
+  },[axiosSecure,user?.email])
 
   const authInfo = {
     logOut,
