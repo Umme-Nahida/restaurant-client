@@ -12,7 +12,7 @@ const AdminRoute = ({children}) => {
     console.log(usersData)
     const location = useLocation();
     console.log(location)
-   if(loading ||isAdminLoading){
+   if(loading || isAdminLoading){
      return <span className="loading loading-spinner loading-lg text-center"></span>
    }
     if(user && isAdmin){
