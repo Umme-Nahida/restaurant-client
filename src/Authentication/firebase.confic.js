@@ -2,17 +2,16 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDM-i1OX7i8TRBUye34GMMPCrSAbq4D7Hw",
-  authDomain: "bristo-boss-fc8a6.firebaseapp.com",
-  projectId: "bristo-boss-fc8a6",
-  storageBucket: "bristo-boss-fc8a6.appspot.com",
-  messagingSenderId: "230140481880",
-  appId: "1:230140481880:web:78acbc6ff1d3649780952d"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
-
+console.log(import.meta.env.VITE_authDomain)
 // Initialize Firebase
  const app = initializeApp(firebaseConfig);
  export const auth = getAuth(app)
