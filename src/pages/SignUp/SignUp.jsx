@@ -26,6 +26,7 @@ const SignUp = () => {
         const userInfo = {
           userName: data.name,
           userEmail: data.email,
+          role:'user'
         };
         axiosPublic.post("/user", userInfo).then((res) => {
           if(res.data.insertedId){

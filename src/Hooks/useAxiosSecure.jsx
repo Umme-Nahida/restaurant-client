@@ -1,10 +1,13 @@
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../Authentication/AuthProvider";
 
 
 const instance = axios.create({
     baseURL: 'http://localhost:5000',
   });
 const useAxiosSecure = () => {
+  const userData=useContext(AuthContext)
 
   instance.interceptors.request.use(function (config) {
     // Do something before request is sent
@@ -22,6 +25,7 @@ const useAxiosSecure = () => {
   },async(error)=>{
     if(error.request.status === 401 || error.request.status === 403){  
       // logout the user
+      await userData.logOut()
       console.log(error)
     }
     return Promise.reject(error);

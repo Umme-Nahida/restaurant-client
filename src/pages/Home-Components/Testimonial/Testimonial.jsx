@@ -23,7 +23,7 @@ const Testimonial = () => {
         setReviews(data);
       });
   }, []);
-  console.log(reviews);
+  // console.log(reviews);
 
   return (
     <div className="py-5 md:py-10">

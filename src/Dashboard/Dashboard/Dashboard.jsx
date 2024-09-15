@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   FaBook,
   FaCalendar,
@@ -10,8 +11,22 @@ import {
   FaUtensils,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import { getUserRole } from "../../api/utils";
+import useAuth from "../../Hooks/useAuth";
 
 const Dashboard = () => {
+  const {user}=useAuth()
+  const [isRole,setIsRole] = useState(null)
+
+  // get user role
+  useEffect(()=>{
+    getUserRole(user?.email)
+    .then(data=>{
+      console.log(data)
+      setIsRole(data)
+    })
+  },[isRole,user])
+
   const isadmin = true;
   return (
     <div className="flex">
@@ -32,7 +47,7 @@ const Dashboard = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/payment">
+              <NavLink to="/dashboard/manageItem">
                 <FaList></FaList>
                 Manage Item
               </NavLink>

@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import { createContext, useEffect, useState } from "react";
 import { auth } from "./firebase.confic";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import toast from "react-hot-toast";
+
 
 
 export const AuthContext = createContext(null);
@@ -52,11 +52,7 @@ const AuthProvider = ({children}) => {
               localStorage.setItem("access-token",res.data.token)
             }else{
               localStorage.removeItem("access-token")
-              logOut()
-              .then(()=>{
-                // user logout cause she has't any token
-                toast.success("user logOut successfully")
-              })
+              
             }
           })
        }
