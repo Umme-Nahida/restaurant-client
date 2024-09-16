@@ -11,28 +11,28 @@ import {
   FaUtensils,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
-import { getUserRole } from "../../api/utils";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Dashboard = () => {
   const {user}=useAuth()
   const [isRole,setIsRole] = useState(null)
+  const axiosPublic= useAxiosPublic()
 
   // get user role
   useEffect(()=>{
-    getUserRole(user?.email)
-    .then(data=>{
-      console.log(data)
-      setIsRole(data)
+    axiosPublic.get(`/getUserRole/${user?.email}`)
+    .then(res=>{
+      setIsRole(res.data.role)
     })
-  },[isRole,user])
+  },[user,axiosPublic])
+  console.log(isRole)
 
-  const isadmin = true;
   return (
     <div className="flex">
       <div className="w-64 min-h-screen bg-yellow-400 ">
         <ul className="menu space-y-3">
-          {isadmin ? (
+          {isRole === 'admin' ? (
             <>
             <li>
               <NavLink to="/dashboard/home">
@@ -80,13 +80,13 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/reservation">
+                <NavLink to="/dashboard/payment">
                   <FaCalendar></FaCalendar>
                   Reservation
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/payment">
+                <NavLink to="/dashboard/paymentHistory">
                   <FaPaypal></FaPaypal>
                   Payment history
                 </NavLink>

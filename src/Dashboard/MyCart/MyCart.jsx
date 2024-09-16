@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import useCart from "../../Hooks/useCart";
 import CartRow from "./CartRow";
 
 const MyCart = () => {
     const [cart] = useCart();
+    console.log(cart)
 
     const totalPice = cart.reduce((total,item)=>{
        return total+ item.price
@@ -14,7 +16,10 @@ const MyCart = () => {
             <div className="flex items-center justify-around">
                 <h1 className="text-xl md:text-2xl">items{cart.length} </h1>
                 <h1 className="text-xl md:text-2xl">total price {totalPice} </h1>
-                <button className="btn btn-primary">pay</button>
+                {cart.length ?
+                 <Link to='/dashboard/payment'><button className="btn btn-primary"> Pay</button></Link> 
+                :
+                 <button disabled className="btn btn-primary"> Pay</button> }
             </div>
 
             {/* table container */}
