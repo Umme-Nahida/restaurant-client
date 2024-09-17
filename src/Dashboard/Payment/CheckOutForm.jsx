@@ -20,7 +20,7 @@ const CheckOutForm = () => {
     useEffect(()=>{
         axiosSecure.post('/create-payment-intent',{price:totalPrice})
         .then(res=>{
-            console.log(res.data.clientSecret)
+            // console.log(res.data.clientSecret)
             setClientSecret(res.data.clientSecret)
         })
     },[axiosSecure,totalPrice])
@@ -73,15 +73,26 @@ const CheckOutForm = () => {
         console.log("payment intent",paymentIntent)
         setErr(" ")
         if(paymentIntent.status === "succeeded"){
-            console.log(paymentIntent.id)
+            // console.log(paymentIntent.id)
             setTansactionId(paymentIntent.id)
             toast.success('payment has been complete successfully')
+
+            // now save payment to the database
+            const payment = {
+                email:user.email,
+                price:totalPrice,
+                date:new Date(),
+                transactionId:paymentIntent.id,
+                cardId:cart.map(item=>item._id),
+                menuId:cart.map(item=>item.menuId),
+                status:'pending'
+            }
+
         }
       }
 
 }
 
-  
     return (
         <div className="max-w-5xl mx-auto">
             <form onSubmit={handleSubmit}>
