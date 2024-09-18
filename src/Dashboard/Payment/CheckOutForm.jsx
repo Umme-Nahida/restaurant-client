@@ -87,7 +87,9 @@ const CheckOutForm = () => {
                 menuId:cart.map(item=>item.menuId),
                 status:'pending'
             }
-
+        // call payment api 
+        const res = await axiosSecure.post('/paymentData',payment)
+        console.log(res.data)
         }
       }
 
