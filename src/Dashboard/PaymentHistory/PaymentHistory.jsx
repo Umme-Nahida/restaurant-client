@@ -1,13 +1,10 @@
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
-import useAllUsers from "../../Hooks/useAllUsers";
 import useGetPayment from "../../Hooks/useGetPayment";
-import UserCart from "../AllUser/UserCart";
 import PaymentCard from "./PaymentCard";
 
 const PaymentHistory = () => {
-    const [user] = useAllUsers()
     const [paymentData] = useGetPayment()
-    console.log(paymentData)
+    // console.log(paymentData)
     return (
         <div> 
             <SectionTitle subTitle={'---At a Glance!---'} heading={'PAYMENT HISTORY'}></SectionTitle>
