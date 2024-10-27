@@ -7,10 +7,6 @@ import CheckOutForm from "./CheckOutForm";
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GETWAY_PK);
 
 const Payment = () => {
-    // const options = {
-    //     // passing the client secret obtained from the server
-    //     clientSecret: '{{sk_test_51OZHgME5jTTsl0NgK4jroDpZyHxSvMHxzDsdVDozHIIPyHAwHRSKY2f8Xb1dtWSY1zy5lGZ1UhbPNhod2CYbJURE003eOg8yhY}}',
-    //   };
 
     return (
         <div>
