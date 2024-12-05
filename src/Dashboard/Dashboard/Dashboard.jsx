@@ -64,12 +64,6 @@ const Dashboard = () => {
                 All users 
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/dashboard/my-booking">
-                <FaBook></FaBook>
-                My Bookings
-              </NavLink>
-            </li>
           </>
           ) : (
             <>
@@ -104,7 +98,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/review">
+                <NavLink to="/dashboard/add-review">
                   <FaStar></FaStar>
                   Add Review
                 </NavLink>
