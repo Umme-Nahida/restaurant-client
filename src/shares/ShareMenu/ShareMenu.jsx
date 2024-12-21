@@ -9,7 +9,7 @@ const ShareMenu = ({item}) => {
                 <h1 className="uppercase text-lg md:text-xl">{item?.name}----------------- </h1>
                 <p>{item?.recipe} </p>
             </div>
-            <p className="text-yellow-400 text-left">${item?.price}</p>
+            <p className="text-yellow-400 text-left lg:text-left">${item?.price}</p>
         </div>
     );
 };
