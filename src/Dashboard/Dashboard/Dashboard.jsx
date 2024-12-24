@@ -80,9 +80,15 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/payment">
+                <NavLink to="/dashboard/reservation">
                   <FaCalendar></FaCalendar>
                   Reservation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/payment">
+                  <FaCalendar></FaCalendar>
+                  Payment
                 </NavLink>
               </li>
               <li>
