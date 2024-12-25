@@ -39,7 +39,7 @@ const Reservation = () => {
             </div>
             </div>
 
-            <button type='submit'>Book A Table </button>
+            <button className='bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2' type='submit'>Book A Table </button>
         </div>
     );
 };
