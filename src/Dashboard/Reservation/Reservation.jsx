@@ -47,6 +47,13 @@ const Reservation = () => {
             {/* vist us sectiion */}
             <div>
                 <SectionTitle heading={'OUR LOCATION'} subTitle={'visit us'}></SectionTitle>
+
+                {/* contact us section */}
+                <div>
+                    <div className='bg-[#D1A054]'> </div>
+                    <div className='bg-[#D1A054]'></div>
+                    <div className='bg-[#D1A054]'></div>
+                </div>
             </div>
         </div>
     );
