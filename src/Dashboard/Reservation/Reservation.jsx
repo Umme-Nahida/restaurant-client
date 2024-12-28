@@ -49,7 +49,12 @@ const Reservation = () => {
                 <SectionTitle heading={'OUR LOCATION'} subTitle={'visit us'}></SectionTitle>
 
                 {/* contact us section */}
-                <div>
+                <div className='grid grid-cols-3 gap-x-2'>
+                    <div className='bg-[#D1A054]'> </div>
+                    <div className='bg-[#D1A054]'></div>
+                    <div className='bg-[#D1A054]'></div>
+                </div>
+                <div className='grid grid-cols-3'>
                     <div className='bg-[#D1A054]'> </div>
                     <div className='bg-[#D1A054]'></div>
                     <div className='bg-[#D1A054]'></div>
