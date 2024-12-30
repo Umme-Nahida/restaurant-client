@@ -18,6 +18,7 @@ import AdminHome from "../Dashboard/AdminHome/AdminHome";
 import UserHome from "../Dashboard/UserHome/UserHome";
 import Reservation from "../Dashboard/Reservation/Reservation";
 import MyBooking from "../Dashboard/MyBooking/MyBooking";
+import AddReview from "../Dashboard/Add-Review/AddReview";
 
 
 const router = createBrowserRouter([
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
         {
           path:'my-booking',
           element:<MyBooking></MyBooking>
+        },
+        {
+          path:'add-review',
+          element:<AddReview></AddReview>
         },
 
         // only admin route
