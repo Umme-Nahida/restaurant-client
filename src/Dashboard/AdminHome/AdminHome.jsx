@@ -49,6 +49,7 @@ const AdminHome = () => {
     queryKey:['admin-stats'],
     queryFn:async()=>{
         const res = await axiosSecure.get('/adminStats')
+        console.log(res.data)
         return res.data
     }
   })
