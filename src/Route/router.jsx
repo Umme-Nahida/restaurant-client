@@ -73,15 +73,15 @@ const router = createBrowserRouter([
         },
         {
           path:'allUsers',
-          element:<AdminRoute><AllUser></AllUser></AdminRoute>
+          element:<AllUser></AllUser>
         },
         {
           path:'manageItem',
-          element:<AdminRoute><ManageItem></ManageItem></AdminRoute>
+          element:<ManageItem></ManageItem>
         },
         {
           path:'addItem',
-          element:<AdminRoute><AddItem></AddItem></AdminRoute>
+          element:<AddItem></AddItem>
         },
       ]
     }
