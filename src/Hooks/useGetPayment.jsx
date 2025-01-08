@@ -8,7 +8,7 @@ const useGetPayment = () => {
         queryKey:['paymentData'],
         queryFn: async () => {
            const res= await axiosSecure.get('/getAllPayment')
-        //    console.log(res)
+           console.log(res?.data)
            return res.data
         }
     })
