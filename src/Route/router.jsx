@@ -16,6 +16,7 @@ import Payment from "../Dashboard/Payment/Payment";
 import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
 import AdminHome from "../Dashboard/AdminHome/AdminHome";
 import UserHome from "../Dashboard/UserHome/UserHome";
+import Reservation from "../Dashboard/Reservation/Reservation";
 
 
 const router = createBrowserRouter([
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
         {
           path:'userHome',
           element:<PrivateRoute><UserHome></UserHome></PrivateRoute>
+        },
+        {
+          path:'reservation',
+          element:<PrivateRoute><Reservation></Reservation></PrivateRoute>
         },
         {
           path:'cart',
