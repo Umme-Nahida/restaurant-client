@@ -1,5 +1,8 @@
 import React from 'react';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
+import { CiLocationOn } from "react-icons/ci";
+import { MdAddIcCall } from "react-icons/md";
+import { FaRegClock } from "react-icons/fa";
 
 const Reservation = () => {
     return (
@@ -49,13 +52,26 @@ const Reservation = () => {
                 <SectionTitle heading={'OUR LOCATION'} subTitle={'visit us'}></SectionTitle>
 
                 {/* contact us section */}
-                <div className='grid grid-cols-3 gap-x-2'>
-                    <div className='bg-[#D1A054]'> </div>
-                    <div className='bg-[#D1A054]'></div>
-                    <div className='bg-[#D1A054]'></div>
+                <div className='grid grid-cols-3 gap-x-2 bg-slate-700'>
+                    <div className='bg-[#D1A054]'><MdAddIcCall></MdAddIcCall></div>
+                    <div className='bg-[#D1A054]'><CiLocationOn></CiLocationOn> </div>
+                    <div className='bg-[#D1A054]'><FaRegClock></FaRegClock> </div>
+                    
                 </div>
                 <div className='grid grid-cols-3'>
-                    <div className='bg-[#D1A054]'> </div>
+                    <div className='bg-[#D1A054]'> 
+                        <h1>PHONE</h1>
+                        <p>+38 (012) 34 56 789</p>
+                    </div>
+                    <div className='bg-[#D1A054]'> 
+                        <h1>ADDRESS</h1>
+                        <p>+38 (012) 34 56 789</p>
+                    </div>
+                    <div className='bg-[#D1A054]'> 
+                        <h1>WORKING HOURS</h1>
+                        <p>+38 (012) 34 56 789</p>
+                        <p>+38 (012) 34 56 789</p>
+                    </div>
                     <div className='bg-[#D1A054]'></div>
                     <div className='bg-[#D1A054]'></div>
                 </div>
