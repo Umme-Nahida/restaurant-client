@@ -43,8 +43,9 @@ const Reservation = () => {
                     </div>
                 </div>
 
-                <button className='bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2' type='submit'>Book A Table </button>
-
+                <div className="text-center mt-5 text-white">
+                  <button className='mx-auto bg-gradient-to-r from-[#835D23] to-[#B58130] px-4 py-2' type='submit'>Book A Table </button>
+                </div>
             </div>
 
             {/* vist us sectiion */}
@@ -52,28 +53,26 @@ const Reservation = () => {
                 <SectionTitle heading={'OUR LOCATION'} subTitle={'visit us'}></SectionTitle>
 
                 {/* contact us section */}
-                <div className='grid grid-cols-3 gap-x-2 bg-slate-700'>
+                <div className='grid grid-cols-3 gap-x-2 text-3xl text-center'>
                     <div className='bg-[#D1A054]'><MdAddIcCall></MdAddIcCall></div>
                     <div className='bg-[#D1A054]'><CiLocationOn></CiLocationOn> </div>
                     <div className='bg-[#D1A054]'><FaRegClock></FaRegClock> </div>
                     
                 </div>
-                <div className='grid grid-cols-3'>
-                    <div className='bg-[#D1A054]'> 
+                <div className='grid grid-cols-3 bg-slate-200'>
+                    <div className=''> 
                         <h1>PHONE</h1>
                         <p>+38 (012) 34 56 789</p>
                     </div>
-                    <div className='bg-[#D1A054]'> 
+                    <div className=''> 
                         <h1>ADDRESS</h1>
                         <p>+38 (012) 34 56 789</p>
                     </div>
-                    <div className='bg-[#D1A054]'> 
+                    <div className=''> 
                         <h1>WORKING HOURS</h1>
                         <p>+38 (012) 34 56 789</p>
                         <p>+38 (012) 34 56 789</p>
                     </div>
-                    <div className='bg-[#D1A054]'></div>
-                    <div className='bg-[#D1A054]'></div>
                 </div>
             </div>
         </div>
