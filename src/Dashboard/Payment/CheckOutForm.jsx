@@ -15,12 +15,12 @@ const CheckOutForm = () => {
     const elements = useElements();
     const [cart] = useCart();
     const totalPrice = cart.reduce((total,item)=>total + item?.price, 0)
-    // console.log(totalPrice)
+    const formattedPrice = totalPrice.toFixed(2);
 
     useEffect(()=>{
-        axiosSecure.post('/create-payment-intent',{price:totalPrice})
+        axiosSecure.post('/create-payment-intent',{price:formattedPrice})
         .then(res=>{
-            // console.log(res.data.clientSecret)
+            // console.log('secret',res.data.clientSecret)
             setClientSecret(res.data.clientSecret)
         })
     },[axiosSecure,totalPrice])

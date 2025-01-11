@@ -23,7 +23,7 @@ const Dashboard = () => {
   useEffect(()=>{
     axiosPublic.get(`/getUserRole/${user?.email}`)
     .then(res=>{
-      setIsRole(res.data.role)
+      setIsRole(res?.data?.role)
     })
   },[user,axiosPublic])
   console.log(isRole)
