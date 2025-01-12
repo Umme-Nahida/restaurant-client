@@ -38,12 +38,13 @@ const Reservation = () => {
                         </div>
                         <div className='flex flex-col gap-y-2'>
                             <label>Guest:</label>
-                            <select name='guest' className='py-2 px-1 border'>
+                            <select name="guest" {...register("guest", { required: true })} className='py-2 px-1 border'>
                                 <option value="1 person">1 person</option>
                                 <option value="2 person">2 person</option>
                                 <option value="3 person">3 person</option>
                                 <option value="4 person">4 person</option>
                             </select>
+                            {errors.guest && <span className="text-red-500">This field is required</span>}
                         </div>
                         <div className='flex flex-col gap-y-2'>
                             <label>Name:</label>
