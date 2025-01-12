@@ -15,7 +15,18 @@ const Reservation = () => {
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) =>{
+        console.log(data)
+        const bookingInfo = {
+            name:data?.name,
+            date:data?.date,
+            time:data?.time,
+            guest:data?.guest,
+            phone:data?.phone
+        }
+
+        
+    }
 
     return (
         <div className='p-20'>
