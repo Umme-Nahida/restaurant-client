@@ -17,6 +17,7 @@ import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
 import AdminHome from "../Dashboard/AdminHome/AdminHome";
 import UserHome from "../Dashboard/UserHome/UserHome";
 import Reservation from "../Dashboard/Reservation/Reservation";
+import MyBooking from "../Dashboard/MyBooking/MyBooking";
 
 
 const router = createBrowserRouter([
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
         {
           path:'payment-history',
           element:<PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
+        },
+        {
+          path:'my-booking',
+          element:<MyBooking></MyBooking>
         },
 
         // only admin route
