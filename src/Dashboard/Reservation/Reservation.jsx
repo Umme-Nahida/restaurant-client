@@ -4,10 +4,11 @@ import { CiLocationOn } from "react-icons/ci";
 import { MdAddIcCall } from "react-icons/md";
 import { FaRegClock } from "react-icons/fa";
 import { useForm } from "react-hook-form"
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 
 const Reservation = () => {
-
+    const axiosSecure = useAxiosSecure()
     const {
         register,
         handleSubmit,
@@ -15,18 +16,21 @@ const Reservation = () => {
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) =>{
-        console.log(data)
-        const bookingInfo = {
-            name:data?.name,
-            date:data?.date,
-            time:data?.time,
-            guest:data?.guest,
-            phone:data?.phone
-        }
+     const onSubmit = (data) =>{
+         console.log(data)
+         const bookingInfo = {
+             name:data.name,
+             date:data.date,
+             time:data.time,
+             guest:data.guest,
+             phone:data.phone
+         }
+       axiosSecure.post('/booking',bookingInfo)
+       .then(res=> {
+         console.log(res.data)
+       })
 
-        
-    }
+     }
 
     return (
         <div className='p-20'>
