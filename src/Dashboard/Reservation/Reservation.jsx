@@ -5,6 +5,7 @@ import { MdAddIcCall } from "react-icons/md";
 import { FaRegClock } from "react-icons/fa";
 import { useForm } from "react-hook-form"
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import toast from 'react-hot-toast';
 
 
 const Reservation = () => {
@@ -17,17 +18,21 @@ const Reservation = () => {
     } = useForm()
 
      const onSubmit = (data) =>{
-         console.log(data)
+        //  console.log(data)
          const bookingInfo = {
              name:data.name,
              date:data.date,
              time:data.time,
+             email:data.email,
              guest:data.guest,
              phone:data.phone
          }
        axiosSecure.post('/booking',bookingInfo)
        .then(res=> {
-         console.log(res.data)
+        //  console.log(res.data)
+         if(res.data.insertedId){
+            toast.success('booking has been successfull')
+         }
        })
 
      }
