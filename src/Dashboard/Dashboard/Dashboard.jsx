@@ -65,7 +65,7 @@ const Dashboard = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/bookings">
+              <NavLink to="/dashboard/my-booking">
                 <FaBook></FaBook>
                 My Bookings
               </NavLink>
@@ -110,7 +110,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/bookings">
+                <NavLink to="/dashboard/my-booking">
                   <FaBook></FaBook>
                   My Bookings
                 </NavLink>
