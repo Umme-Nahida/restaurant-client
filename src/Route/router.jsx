@@ -19,6 +19,7 @@ import UserHome from "../Dashboard/UserHome/UserHome";
 import Reservation from "../Dashboard/Reservation/Reservation";
 import MyBooking from "../Dashboard/MyBooking/MyBooking";
 import AddReview from "../Dashboard/Add-Review/AddReview";
+import ManageAllBooking from "../Dashboard/ManageAllBooking/ManageAllBooking";
 
 
 const router = createBrowserRouter([
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
         {
           path:'allUsers',
           element:<AllUser></AllUser>
+        },
+        {
+          path:'manageBooking',
+          element:<ManageAllBooking/>
         },
         {
           path:'manageItem',

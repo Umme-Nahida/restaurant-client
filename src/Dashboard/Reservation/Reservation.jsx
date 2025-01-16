@@ -25,7 +25,8 @@ const Reservation = () => {
              time:data.time,
              email:data.email,
              guest:data.guest,
-             phone:data.phone
+             phone:data.phone,
+             status:'pending'
          }
        axiosSecure.post('/booking',bookingInfo)
        .then(res=> {
