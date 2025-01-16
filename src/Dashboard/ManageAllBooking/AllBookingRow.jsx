@@ -1,17 +1,11 @@
 /* eslint-disable react/prop-types */
-import { IoMdCheckmark } from "react-icons/io";
-import { MdDelete } from "react-icons/md";
+
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import Swal from "sweetalert2";
-import useAllUsers from "../../Hooks/useAllUsers";
-import { FaUsers } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 
 const AllBookingRow = ({item,index,refetch}) => {
   const axiosSecure= useAxiosSecure()
-
-
 
   const handleUpdate = (status)=>{
     console.log(status)

@@ -20,6 +20,7 @@ import Reservation from "../Dashboard/Reservation/Reservation";
 import MyBooking from "../Dashboard/MyBooking/MyBooking";
 import AddReview from "../Dashboard/Add-Review/AddReview";
 import ManageAllBooking from "../Dashboard/ManageAllBooking/ManageAllBooking";
+import Contact from "../components/Contact/Contact";
 
 
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         {
             path:'/ourMenu',
             element:<PrivateRoute><OurMenu></OurMenu></PrivateRoute>
+        },
+        {
+            path:'/contact',
+            element:<Contact></Contact>
         },
         {
             path:'/order/:category',

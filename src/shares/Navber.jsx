@@ -21,7 +21,7 @@ const Navber = () => {
         <Link>Home</Link>
       </li>
       <li>
-        <Link>Contact Us</Link>
+        <Link to='/contact'>Contact Us</Link>
       </li>
       
       {/* dashboard */}
