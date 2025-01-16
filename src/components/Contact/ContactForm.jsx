@@ -16,8 +16,14 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    // console.log("Form Data:", formData);
     toast.success('thanks for your message')
+    setFormData({
+        name: "",
+    email: "",
+    phone: "",
+    message: "",
+    })
     // Add form submission logic here
   };
 
