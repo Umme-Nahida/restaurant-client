@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
+    toast.success('thanks for your message')
     // Add form submission logic here
   };
 
