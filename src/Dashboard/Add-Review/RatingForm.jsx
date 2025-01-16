@@ -1,12 +1,20 @@
 import React, { useState } from "react";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const RatingForm = () => {
+  const {user}= useAuth();
+  const axiosSecure = useAxiosSecure();
   const [rating, setRating] = useState(0);
   const [formData, setFormData] = useState({
     recipe: "",
     suggestion: "",
     review: "",
   });
+
+  const email = user?.email;
 
   const handleRating = (star) => {
     setRating(star);
@@ -19,8 +27,23 @@ const RatingForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted Data:", { rating, ...formData });
-    alert("Thank you for your feedback!");
+    if(rating < 1){
+      return Swal.fire("please give review rating!");
+    }
+
+    axiosSecure.post('/addReview',{ rating, ...formData,email })
+    .then(res=>{
+      // console.log(res.data)
+      if(res.data.insertedId){
+        toast.success("Thank you for your feedback!");
+      }
+    })
+    // console.log("Submitted Data:", { rating, ...formData,email });
+
+   
+    // form reset
+    setRating(0)
+    setFormData({recipe: "", suggestion: "", review: ""})
   };
 
   return (

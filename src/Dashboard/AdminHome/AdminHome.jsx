@@ -57,8 +57,8 @@ const AdminHome = () => {
 // piedata 
   const pieData = [
     { name: 'Users', value: stats?.users },
-    { name: 'Products', value: stats?.menuIds },
-    { name: 'Orders', value: stats?.order },
+    { name: 'Products', value: stats?.products },
+    { name: 'Orders', value: stats?.orders },
   ];
   
   
@@ -157,7 +157,7 @@ const data = [
                 Total product
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                {stats?.menuIds}
+                {stats?.products}
               </h4>
             </div>
           </div>
@@ -173,7 +173,7 @@ const data = [
                 Total Orders
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                {stats?.order}
+                {stats?.orders}
               </h4>
             </div>
           </div>
@@ -182,7 +182,6 @@ const data = [
         <div className="mb-4 grid grid-cols-1 md:grid-cols-1 gap-6 lg:grid-cols-1 xl:grid-cols-3">
           {/* Total Sales Graph */}
           <div className="relative flex flex-col  items-center justify-center bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
-            {/* <SalesLineChart /> */}
             <BarChart
               width={600}
               height={300}
