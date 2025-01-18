@@ -80,7 +80,7 @@ const Reservation = () => {
                         <div className='flex flex-col gap-y-2'>
                             <label>Email:</label>
                             <input type="email" name="email" {...register("email", { required: true })} id="" className='px-2 py-2 border ' placeholder='your email  ' />
-                            {errors.email && <span className='text-red-500'>This field is required</span>}
+                            {errors.email && <span className='text-red-500'>This email field is required</span>}
                         </div>
                     </div>
 
