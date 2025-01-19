@@ -3,8 +3,8 @@ import useMenu from "../../Hooks/useMenu";
 import ManageCart from "./ManageCart";
 
 const ManageItem = () => {
-    const [menu] = useMenu()
-    console.log(menu)
+    const [,menus] = useMenu()
+    // console.log(menus)
     return (
         <div>
             <SectionTitle subTitle={"---Hurry Up!---"} heading={"MANAGE ALL ITEMS"}></SectionTitle>
@@ -24,7 +24,7 @@ const ManageItem = () => {
             </tr>
           </thead>
           <tbody>
-            {menu?.map((item, index) => (
+            {menus?.map((item, index) => (
               <ManageCart key={index} item={item} num={index}></ManageCart>
             ))}
           </tbody>

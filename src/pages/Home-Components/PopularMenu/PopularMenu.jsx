@@ -1,6 +1,7 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import ShareMenu from "../../../shares/ShareMenu/ShareMenu";
 import useMenu from "../../../Hooks/useMenu";
+import ShareMenu from "../../../shares/ShareMenu/ShareMenu";
+
 
 const PopularMenu = () => {
 //   const [menus,setMenu] = useState([]);
@@ -15,7 +16,7 @@ const PopularMenu = () => {
 //       })
 //     },[])
 
-    const [menus] = useMenu()
+    const [refetch,menus] = useMenu()
     const popularItems = menus?.filter(item=>item.category ==="popular")
     
     return (

@@ -1,9 +1,15 @@
 /* eslint-disable react/prop-types */
 
 import { MdDelete, MdEdit } from 'react-icons/md';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const ManageCart = ({item,num}) => {
-  console.log(item)
+  // console.log(item)
+  const axiosSecure = useAxiosSecure()
+
+  const handleDelete = (id)=>{
+    // console.log(id)
+  }
     return (
         <tr>
         <th>{num + 1}</th>
@@ -27,6 +33,7 @@ const ManageCart = ({item,num}) => {
         </th>
         <th>
           <button
+          onClick={()=>handleDelete(item?._id)}
             className="btn btn-ghost btn-xs text-2xl text-red-500"
           >
             <MdDelete></MdDelete>
