@@ -2,14 +2,44 @@
 
 import { MdDelete, MdEdit } from 'react-icons/md';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
+import Modal from '../../components/Modal/Modal';
+import { useState } from 'react';
 
-const ManageCart = ({item,num}) => {
+const ManageCart = ({item,num, refetch}) => {
   // console.log(item)
   const axiosSecure = useAxiosSecure()
+  const [openModal,setOpenModal]= useState(false)
 
   const handleDelete = (id)=>{
     // console.log(id)
+    Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to delete item!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              axiosSecure.delete(`/deleteMenu/${id}`).then((res) => {
+                // console.log(res.data);
+                if (res.data.deletedCount > 0) {
+                  Swal.fire({
+                    title: "Deleted!",
+                    text: "Your item has been deleted.",
+                    icon: "success",
+                  });
+                  refetch()
+                }
+              });
+            }
+          });
+    
   }
+
+
     return (
         <tr>
         <th>{num + 1}</th>
@@ -28,7 +58,10 @@ const ManageCart = ({item,num}) => {
           <button
             className="btn btn-ghost btn-xs text-2xl text-red-500"
           >
-            <MdEdit></MdEdit>
+            <MdEdit onClick={()=>setOpenModal(true)}></MdEdit>
+            <Modal openModal={openModal} setOpenModal={setOpenModal} primary={true}>
+              <h1>Hi</h1>
+            </Modal>
           </button>
         </th>
         <th>
