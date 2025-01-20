@@ -3,7 +3,7 @@ import useMenu from "../../Hooks/useMenu";
 import ManageCart from "./ManageCart";
 
 const ManageItem = () => {
-    const [,menus] = useMenu()
+    const [refetch,menus] = useMenu()
     // console.log(menus)
     return (
         <div>
@@ -25,7 +25,7 @@ const ManageItem = () => {
           </thead>
           <tbody>
             {menus?.map((item, index) => (
-              <ManageCart key={index} item={item} num={index}></ManageCart>
+              <ManageCart key={index} item={item} num={index} refetch={refetch}></ManageCart>
             ))}
           </tbody>
         </table>
