@@ -4,7 +4,7 @@ export default function Modal({ children, setOpenModal, openModal, primary }) {
 
   // handle close button
   const handleCloseBtn = () => {
-    setOpenModal(false);
+    return setOpenModal(false);
   };
 
   return (
