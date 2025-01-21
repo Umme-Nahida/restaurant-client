@@ -4,18 +4,6 @@ import ShareMenu from "../../../shares/ShareMenu/ShareMenu";
 
 
 const PopularMenu = () => {
-//   const [menus,setMenu] = useState([]);
-
-//     useEffect(()=>{
-//       fetch("menu.json")
-//       .then(res=>res.json())
-//       .then(data=>{
-//         const popularItems = data.filter( item => item?.category === "popular")
-//         setMenu(popularItems)
-        
-//       })
-//     },[])
-
     const [refetch,menus] = useMenu()
     const popularItems = menus?.filter(item=>item.category ==="popular")
     
@@ -26,7 +14,7 @@ const PopularMenu = () => {
             subTitle={"---Check it out---"}
             heading={"FROM OUR MENU"}
             ></SectionTitle>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 m-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 m-5 lg:m-10">
                 {
                     popularItems.map(menu=>(
                         <ShareMenu
