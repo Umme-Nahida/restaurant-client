@@ -12,12 +12,12 @@ const Featured = () => {
         ></SectionTitle>
         <div className="flex flex-col md:flex-row items-center justify-center gap-x-10">
           <div className="flex items-center justify-end">
-            <img src={img1} alt="" className="w-4/5" />
+            <img src={img1} alt="" className="w-full lg:w-4/5"/>
           </div>
-          <div className="text-white font-medium space-y-3">
+          <div className="px-5 mt-5 text-white font-medium space-y-3">
             <h5>March 20, 2023</h5>
             <h4>WHERE CAN I GET SOME?</h4>
-            <p className="w-3/5">
+            <p className="lg:w-3/5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
               voluptate facere, deserunt dolores maiores quod nobis quas quasi.
               Eaque repellat recusandae ad laudantium tempore consequatur

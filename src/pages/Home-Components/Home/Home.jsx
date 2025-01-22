@@ -15,9 +15,9 @@ const Home = () => {
       <Banner></Banner>
       <Category></Category>
        <PopularMenu></PopularMenu>
-      {/*<Chef></Chef>
-      <Featured></Featured>
-      <Testimonial></Testimonial> */}
+      <Chef></Chef>
+     <Featured></Featured>
+     <Testimonial></Testimonial> 
     </div>
   );
 };
