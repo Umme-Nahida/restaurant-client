@@ -8,7 +8,7 @@ import { LineChart } from 'recharts';
 import { Link } from 'react-router-dom';
 
 const ManageCart = ({ item, num, refetch }) => {
-  // console.log(item)
+  console.log(item)
   const axiosSecure = useAxiosSecure();
   const [openModal, setOpenModal] = useState(false);
 

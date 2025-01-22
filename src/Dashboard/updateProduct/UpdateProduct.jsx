@@ -2,10 +2,18 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import { FaUtensils } from 'react-icons/fa';
+import { useLoaderData } from 'react-router-dom';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import toast from 'react-hot-toast';
 
 const UpdateProduct = () => {
+const updateData = useLoaderData()
+const axiosSecure = useAxiosSecure()
+console.log('update data',updateData)
+
+const {_id,name,recipe,image,category,price} = updateData;
  const { register, handleSubmit, reset } = useForm();
- const [image,setImage] = useState("");
+ const [img,setImage] = useState(`${image}`);
  const image_api_key = import.meta.env.VITE_IMAGE_API_KEY;
  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_api_key}`
    // update recipe start
@@ -15,15 +23,23 @@ const UpdateProduct = () => {
     const updateItem = {
       name:data.name,
       recipe:data.recipe,
-      image:image,
+      image:img,
       category:data.category,
       price:data.price
     }
     console.log(updateItem)
+    axiosSecure.put(`/updateProduct/${_id}`,updateData)
+    .then(res=>{
+        console.log(res.data)
+        if(res.data.modifiedCount > 0){
+            toast.success('product has been updated successfully')
+        }
+    })
+    
   };
 
 const handleImage = (e)=>{
-  console.log(e.target.files[0])
+  // console.log(e.target.files[0])
   const selectedImage = e.target.files[0]
   const formData = new FormData()
   formData.append('image',selectedImage)
@@ -56,6 +72,7 @@ const handleImage = (e)=>{
                       <input
                         type="text"
                         {...register("name", { required: true })}
+                        defaultValue={name}
                         placeholder="Recipe name"
                         className="input input-bordered"
                         required
@@ -66,7 +83,7 @@ const handleImage = (e)=>{
                       <div className="form-control w-full space-y-2 ">
                         <label className="label">Category*</label>
                         <select
-                          defaultValue="default"
+                          defaultValue={category}
                           className="select select-bordered w-full"
                           {...register("category", { required: true })}
                         >
@@ -87,6 +104,7 @@ const handleImage = (e)=>{
                         <input
                           type="text"
                           {...register("price", { required: true })}
+                          defaultValue={price}
                           placeholder="Price"
                           className="input input-bordered"
                           required
@@ -100,6 +118,7 @@ const handleImage = (e)=>{
                       </label>
                       <textarea
                         {...register("recipe", { required: true })}
+                        defaultValue={recipe}
                         placeholder="Recipe Details"
                         rows={3}
                         className="p-5"
@@ -107,10 +126,10 @@ const handleImage = (e)=>{
                     </div>
                     {/* row 4 */}
                     <div className="form-control">
-                      <input type="file" onChange={handleImage} className="file-input w-full max-w-xs" />
+                      <input type="file" onChange={handleImage}  className="file-input w-full max-w-xs" />
                     </div>
                     <button className="btn bg-gradient-to-br from-[#835D23] to-[#B58130] text-white">
-                      Add Item
+                      Update Item
                       <FaUtensils></FaUtensils>
                     </button>
                   </form>
