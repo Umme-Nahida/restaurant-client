@@ -21,6 +21,7 @@ import MyBooking from "../Dashboard/MyBooking/MyBooking";
 import AddReview from "../Dashboard/Add-Review/AddReview";
 import ManageAllBooking from "../Dashboard/ManageAllBooking/ManageAllBooking";
 import Contact from "../components/Contact/Contact";
+import UpdateProduct from "../Dashboard/updateProduct/UpdateProduct";
 
 
 const router = createBrowserRouter([
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
         {
           path:'my-booking',
           element:<MyBooking></MyBooking>
+        },
+        {
+          path:'updateProduct/:id',
+          element:<UpdateProduct></UpdateProduct>
         },
         {
           path:'add-review',

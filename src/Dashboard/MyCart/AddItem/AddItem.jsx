@@ -9,7 +9,7 @@ const AddItem = () => {
   const axiosSecure = useAxiosSecure();
   const [image,setImage] = useState(" ")
   const image_api_key= import.meta.env.VITE_IMAGE_API_KEY;
-  const image_hosting_api=`https://api.imgbb.com/1/upload?key=${image_api_key}`
+  const image_hosting_api=`https://api.imgbb.com/1/upload?key=${image_api_key}`;
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {

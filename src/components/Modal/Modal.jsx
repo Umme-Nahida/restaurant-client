@@ -4,7 +4,7 @@ export default function Modal({ children, setOpenModal, openModal, primary }) {
 
   // handle close button
   const handleCloseBtn = () => {
-    return setOpenModal(false);
+     setOpenModal(false);
   };
 
   return (
@@ -31,7 +31,7 @@ export default function Modal({ children, setOpenModal, openModal, primary }) {
         >
           <span
             onClick={handleCloseBtn}
-            className="w-full flex justify-end cursor-pointer bg-green-500 text-3xl"
+            className="w-full flex justify-end cursor-pointer text-3xl"
           >
             <IoIosCloseCircle />
           </span>
