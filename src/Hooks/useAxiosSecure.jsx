@@ -4,7 +4,7 @@ import { AuthContext } from "../Authentication/AuthProvider";
 
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://restaurant-server-fnj6.vercel.app',
   });
 const useAxiosSecure = () => {
   const userData=useContext(AuthContext)

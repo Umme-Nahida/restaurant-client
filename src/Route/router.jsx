@@ -86,7 +86,7 @@ const router = createBrowserRouter([
         {
           path:'updateProduct/:id',
           element:<UpdateProduct></UpdateProduct>,
-          loader: ({params})=>fetch(`http://localhost:5000/getUpdateItem/${params.id}`)
+          loader: ({params})=>fetch(`https://restaurant-server-fnj6.vercel.app/getUpdateItem/${params.id}`)
         },
         {
           path:'add-review',
