@@ -6,7 +6,7 @@ import useAxiosSecure from "./useAxiosSecure";
 const useMenu = () => {
     const axiosSecure = useAxiosSecure()
 
-    const {data:menus=[],isLoading:loading,refetch} = useQuery({
+    const {data:menus=[],isLoading:loading,isError,refetch} = useQuery({
       queryKey:['menu'],
       queryFn: async()=>{
         const res = await axiosSecure('/menu')
@@ -25,7 +25,7 @@ const useMenu = () => {
     // },[])
    console.log(menus)
 
-    return [refetch,menus,loading]
+    return [refetch,menus,loading,isError]
 };
 
 export default useMenu;

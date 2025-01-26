@@ -12,7 +12,7 @@ const Order = () => {
     const {category} = useParams()
     const initialIndex = categories.indexOf(category);
     const [tabIndex, setTabIndex] = useState(initialIndex);
-    const [menu] = useMenu();
+    const [menu,loading,isError] = useMenu();
     const desserts = menu.filter((item) => item?.category === "dessert");
   const salad = menu.filter((item) => item?.category === "salad");
   const pizza = menu.filter((item) => item?.category === "pizza");
@@ -39,22 +39,22 @@ const Order = () => {
           <Tab>offered</Tab>
         </TabList>
         <TabPanel>
-            <OrderTab items={salad}></OrderTab>
+            <OrderTab loading={loading} isError={isError} items={salad}></OrderTab>
         </TabPanel>
         <TabPanel>
-        <OrderTab items={pizza}></OrderTab>
+        <OrderTab  loading={loading} isError={isError} items={pizza}></OrderTab>
         </TabPanel>
         <TabPanel>
-        <OrderTab items={soup}></OrderTab>
+        <OrderTab  loading={loading} isError={isError} items={soup}></OrderTab>
         </TabPanel>
         <TabPanel>
-        <OrderTab items={offered}></OrderTab>
+        <OrderTab  loading={loading} isError={isError} items={offered}></OrderTab>
         </TabPanel>
         <TabPanel>
-        <OrderTab items={desserts}></OrderTab>
+        <OrderTab  loading={loading} isError={isError} items={desserts}></OrderTab>
         </TabPanel>
         <TabPanel>
-        <OrderTab items={drinks}></OrderTab>
+        <OrderTab  loading={loading} isError={isError} items={drinks}></OrderTab>
         </TabPanel>
       </Tabs>
     </div>
