@@ -8,13 +8,13 @@ import useMenu from "../../Hooks/useMenu";
 import MenuCategory from "../MenuCategory/MenuCategory";
 
 const OurMenu = () => {
-  const [menu,loading,isError] = useMenu();
-  console.log('this is menu',menu)
-  const desserts = menu?.filter((item) => item?.category === "dessert");
-  const salad = menu?.filter((item) => item?.category === "salad");
-  const pizza = menu?.filter((item) => item?.category === "pizza");
-  const soup = menu?.filter((item) => item?.category === "soup");
-  const offered = menu?.filter((item) => item?.category === "offered");
+  const [refetch,menus,loading,isError] = useMenu();
+  console.log('this is menu',menus)
+  const desserts = menus?.filter((item) => item?.category === "dessert");
+  const salad = menus?.filter((item) => item?.category === "salad");
+  const pizza = menus?.filter((item) => item?.category === "pizza");
+  const soup = menus?.filter((item) => item?.category === "soup");
+  const offered = menus?.filter((item) => item?.category === "offered");
   console.log(offered)
   
   return (
