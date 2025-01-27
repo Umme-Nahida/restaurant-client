@@ -9,6 +9,7 @@ import MenuCategory from "../MenuCategory/MenuCategory";
 
 const OurMenu = () => {
   const [menu,loading,isError] = useMenu();
+  console.log('this is menu',menu)
   const desserts = menu?.filter((item) => item?.category === "dessert");
   const salad = menu?.filter((item) => item?.category === "salad");
   const pizza = menu?.filter((item) => item?.category === "pizza");
