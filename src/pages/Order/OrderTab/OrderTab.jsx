@@ -10,7 +10,7 @@ const OrderTab = ({items,isError,loading}) => {
     }
 
     if(isError){
-        return <div>{isError?.message ? isError.message : <p>This data is not a array </p>
+        return <div>{isError?.error?.message ? isError?.error.message : <p>This data is not a array </p>
         }</div>
     }
     return (
